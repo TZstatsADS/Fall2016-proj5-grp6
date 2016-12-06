@@ -1,0 +1,974 @@
+<!DOCTYPE html> 
+ <html> 
+ <head> 
+ <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+ <meta charset="utf-8"> 
+ <style type="text/css">  
+ html { height: 100% ; font-size: small} 
+ body { height: 100%; margin: 0px; padding: 0px }
+ #map_canvas {min-height: 100%;height:auto; } 
+ #cBoxes {position:absolute;right:5px; top:50px; background:white}
+</style> 
+
+ <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false&v=3.18"> </script>  
+
+ <script language="javascript"> 
+  
+ USGSOverlay.prototype = new google.maps.OverlayView(); 
+function USGSOverlay(bounds, image, map) {
+      this.bounds_ = bounds;
+      this.image_ = image;
+      this.map_ = map;
+      this.div_ = null;
+      this.setMap(map); }
+USGSOverlay.prototype.onAdd = function() {
+      var div = document.createElement("DIV");
+      div.style.border = "none";
+      div.style.borderWidth = "0px";
+      div.style.position = "absolute";
+      var img = document.createElement("img");
+      img.src = this.image_;
+      img.style.width = "100%";
+      img.style.height = "100%";
+      div.appendChild(img);
+      this.div_ = div;
+      this.div_.style.opacity = 0.7;
+      var panes = this.getPanes();
+      panes.overlayImage.appendChild(this.div_);}
+USGSOverlay.prototype.draw = function() {
+        var overlayProjection = this.getProjection();
+        var sw = overlayProjection.fromLatLngToDivPixel(this.bounds_.getSouthWest());
+        var ne = overlayProjection.fromLatLngToDivPixel(this.bounds_.getNorthEast());
+        var div = this.div_;
+        div.style.left = sw.x + "px";
+        div.style.top = ne.y + "px";
+        div.style.width = (ne.x - sw.x) + "px";
+        div.style.height = (sw.y - ne.y) + "px";} 
+USGSOverlay.prototype.onRemove = function() { 
+ this.div_.parentNode.removeChild(this.div_);} 
+USGSOverlay.prototype.hide = function() { if (this.div_) { this.div_.style.visibility = "hidden";} } 
+USGSOverlay.prototype.show = function() {if (this.div_) {  this.div_.style.visibility = "visible";}} 
+       USGSOverlay.prototype.toggle = function() { 
+ if (this.div_) { 
+  if (this.div_.style.visibility == "hidden") {  
+   this.show(); 
+  } else { 
+  this.hide(); } } } 
+ USGSOverlay.prototype.toggleDOM = function() {
+          if (this.getMap()) {
+            this.setMap(null);
+          } else {
+            this.setMap(this.map_);}}
+ function setOpacR(Raster,textname) { 
+  opac=0.01*parseInt(document.getElementById(textname).value) 
+    Raster.div_.style.opacity= opac } 
+
+ var marker 
+ var  map  
+ var  markerstheaterxgeo779 =[] ; var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(40.7592608,-73.9892012),
+ map:map,
+ title:"id : 1 \rMusical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/Kinky%20Boots.jpg?token=AUWyJycs1txVoVAkOKWL9sr9P69wqkczks5YUFAmwA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> \rTheatre : Al Hirschfeld Theatre \rAddress : W. 45th St. (No. 302) \rCapacity : 1424 \rOwner.Operator : Jujamcyn Theaters \rCurrent.production : Kinky Boots \rType : Musical \rOpened : 2013-04-04April 4, 2013 \rClosing : Open-ended \ryoutube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=Kinky Boots Musical\" frameborder=\"0\" allowfullscreen></iframe> \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|FF4500|10|b|1"), 
+  zIndex: null }); 
+markerstheaterxgeo779.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(40.7612624,-73.9850343),
+ map:map,
+ title:"id : 2 \rMusical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/Chicago.jpg?token=AUWyJ6zrnVFd4x5bTS2cQFcaqb9yFNBIks5YUFXLwA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> \rTheatre : Ambassador Theatre \rAddress : W. 49th St. (No. 219) \rCapacity : 1125 \rOwner.Operator : Shubert Organization \rCurrent.production : Chicago \rType : Musical \rOpened : 1996-11-14November 14, 1996 \rClosing : Open-ended \ryoutube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=Chicago Musical\" frameborder=\"0\" allowfullscreen></iframe> \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|FF4500|10|b|2"), 
+  zIndex: null }); 
+markerstheaterxgeo779.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(40.756829,-73.988077),
+ map:map,
+ title:"id : 3 \rMusical.Poster :  \rTheatre : American Airlines Theatre \rAddress : W. 42nd St. (No. 229) \rCapacity : 740 \rOwner.Operator : Roundabout Theatre Company \rCurrent.production : The Price \rType : Play \rOpened : 2017-03-16March 16, 2017* \rClosing : 2017-05-07May 7, 2017 \ryoutube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=The Price play\" frameborder=\"0\" allowfullscreen></iframe> \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|FF4500|10|b|3"), 
+  zIndex: null }); 
+markerstheaterxgeo779.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(40.7633108,-73.9841883),
+ map:map,
+ title:"id : 4 \rMusical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/Jersey%20Boys.jpg?token=AUWyJ_TNtZu9CMpZhUvXO_vNADGeTrZ4ks5YUFbZwA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> \rTheatre : August Wilson Theatre \rAddress : W. 52nd St. (No. 245) \rCapacity : 1228 \rOwner.Operator : Jujamcyn Theaters \rCurrent.production : Jersey Boys \rType : Musical \rOpened : 2005-11-06November 6, 2005 \rClosing : 2017-01-15January 15, 2017 \ryoutube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=Jersey Boys musical\" frameborder=\"0\" allowfullscreen></iframe> \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|FF4500|10|b|4"), 
+  zIndex: null }); 
+markerstheaterxgeo779.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(40.7566429,-73.983773),
+ map:map,
+ title:"id : 5 \rMusical.Poster :  \rTheatre : Belasco Theatre \rAddress : W. 44th St. (No. 111) \rCapacity : 1018 \rOwner.Operator : Shubert Organization \rCurrent.production : The Glass Menagerie \rType : Play \rOpened : 2017-03-09March 9, 2017* \rClosing : 2017-07-02July 2, 2017 \ryoutube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=The Glass Menagerie play\" frameborder=\"0\" allowfullscreen></iframe> \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|FF4500|10|b|5"), 
+  zIndex: null }); 
+markerstheaterxgeo779.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(40.7587254,-73.9877258),
+ map:map,
+ title:"id : 6 \rMusical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/The%20Color%20Purple.jpg?token=AUWyJyVbJZ-JN2u_HxvPkY8865AuonZhks5YUFcTwA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> \rTheatre : Bernard B. Jacobs Theatre \rAddress : W. 45th St. (No. 242) \rCapacity : 1078 \rOwner.Operator : Shubert Organization \rCurrent.production : The Color Purple \rType : Musical \rOpened : 2015-12-10December 10, 2015 \rClosing : 2017-01-08January 8, 2017 \ryoutube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=The Color Purple musical\" frameborder=\"0\" allowfullscreen></iframe> \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|FF4500|10|b|6"), 
+  zIndex: null }); 
+markerstheaterxgeo779.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(40.7583434,-73.9870324),
+ map:map,
+ title:"id : 7 \rMusical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/Les%20Liaisons%20Dangereuses.jpg?token=AUWyJ4j1oJKvLq2O1lsAeyYGcvmJ_-3_ks5YUFujwA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> \rTheatre : Booth Theatre \rAddress : W. 45th St. (No. 222) \rCapacity : 766 \rOwner.Operator : Shubert Organization \rCurrent.production : Les Liaisons Dangereuses \rType : Play \rOpened : 2016-10-30October 30, 2016 \rClosing : 2017-01-08January 8, 2017 \ryoutube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=Les Liaisons Dangereuses\" frameborder=\"0\" allowfullscreen></iframe> \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|FF4500|10|b|7"), 
+  zIndex: null }); 
+markerstheaterxgeo779.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(40.7582398,-73.9875779),
+ map:map,
+ title:"id : 8 \rMusical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/The%20Front%20Page.jpg?token=AUWyJ2Z2mbTiCYAl3SiHfbxRzj1tA9H9ks5YUFvKwA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> \rTheatre : Broadhurst Theatre \rAddress : W. 44th St. (No. 235) \rCapacity : 1186 \rOwner.Operator : Shubert Organization \rCurrent.production : The Front Page \rType : Play \rOpened : 2016-10-20October 20, 2016 \rClosing : 2017-01-29January 29, 2017 \ryoutube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=The front page play\" frameborder=\"0\" allowfullscreen></iframe> \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|FF4500|10|b|8"), 
+  zIndex: null }); 
+markerstheaterxgeo779.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(40.7632112,-73.9832214),
+ map:map,
+ title:"id : 9 \rMusical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/Fiddler%20on%20the%20Roof.jpg?token=AUWyJyAn5XZBcDE19UfktMjCF6txPARXks5YUFc7wA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> \rTheatre : Broadway Theatre \rAddress : Broadway (No. 1681) \rCapacity : 1761 \rOwner.Operator : Shubert Organization \rCurrent.production : Fiddler on the Roof \rType : Musical \rOpened : 2015-12-20December 20, 2015 \rClosing : 2016-12-31December 31, 2016 \ryoutube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=Fiddler on the roof musical\" frameborder=\"0\" allowfullscreen></iframe> \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|FF4500|10|b|9"), 
+  zIndex: null }); 
+markerstheaterxgeo779.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(40.7599428,-73.9869169),
+ map:map,
+ title:"id : 10 \rMusical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/Waitress.jpg?token=AUWyJyVGAVxhW1xRpbNUmhkH_QzB94VIks5YUFdawA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> \rTheatre : Brooks Atkinson Theatre \rAddress : W. 47th St. (No. 256) \rCapacity : 1094 \rOwner.Operator : Nederlander Organization \rCurrent.production : Waitress \rType : Musical \rOpened : 2016-04-24April 24, 2016 \rClosing : Open-ended \ryoutube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=Waitress musical\" frameborder=\"0\" allowfullscreen></iframe> \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|FF4500|10|b|10"), 
+  zIndex: null }); 
+markerstheaterxgeo779.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(40.7619314,-73.985216),
+ map:map,
+ title:"id : 11 \rMusical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/In%20Transit.jpg?token=AUWyJ50XiKuPLyWrM8qedDbH-bOGWYsfks5YUFd9wA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> \rTheatre : Circle in the Square Theatre \rAddress : W. 50th St. (No. 235) \rCapacity : 840 \rOwner.Operator : Independent \rCurrent.production : In Transit \rType : Musical \rOpened : 2016-12-11December 11, 2016* \rClosing : Open-ended \ryoutube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=In transit musical\" frameborder=\"0\" allowfullscreen></iframe> \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|FF4500|10|b|11"), 
+  zIndex: null }); 
+markerstheaterxgeo779.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(40.7591165,-73.9830688),
+ map:map,
+ title:"id : 12 \rMusical.Poster :  \rTheatre : Cort Theatre \rAddress : W. 48th St. (No. 138) \rCapacity : 1084 \rOwner.Operator : Shubert Organization \rCurrent.production : Indecent \rType : Play \rOpened : 2017-04-18April 18, 2017* \rClosing : Open-ended \ryoutube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=Indecent play\" frameborder=\"0\" allowfullscreen></iframe> \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|FF4500|10|b|12"), 
+  zIndex: null }); 
+markerstheaterxgeo779.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(40.7601064,-73.9861494),
+ map:map,
+ title:"id : 13 \rMusical.Poster :  \rTheatre : Ethel Barrymore Theatre \rAddress : W. 47th St. (No. 243) \rCapacity : 1096 \rOwner.Operator : Shubert Organization \rCurrent.production : The Present \rType : Play \rOpened : 2017-01-08January 8, 2017* \rClosing : 2017-03-19March 19, 2017 \ryoutube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=The present play\" frameborder=\"0\" allowfullscreen></iframe> \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|FF4500|10|b|13"), 
+  zIndex: null }); 
+markerstheaterxgeo779.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(40.7610652,-73.9857001),
+ map:map,
+ title:"id : 14 \rMusical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/The%20Book%20of%20Mormon.jpg?token=AUWyJ3PzK3uF3lQXGXcuRZIHY4qmVJtZks5YUFecwA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> \rTheatre : Eugene O'Neill Theatre \rAddress : W. 49th St. (No. 230) \rCapacity : 1066 \rOwner.Operator : Jujamcyn Theaters \rCurrent.production : The Book of Mormon \rType : Musical \rOpened : 2011-03-24March 24, 2011 \rClosing : Open-ended \ryoutube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=The book of mormon musical\" frameborder=\"0\" allowfullscreen></iframe> \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|FF4500|10|b|14"), 
+  zIndex: null }); 
+markerstheaterxgeo779.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(40.7584902,-73.9873682),
+ map:map,
+ title:"id : 15 \rMusical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/The%20Humans.jpg?token=AUWyJ8Jl44-iu85P4XY8bB-BCBD0Widwks5YUFe8wA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> \rTheatre : Gerald Schoenfeld Theatre \rAddress : W. 45th St. (No. 236) \rCapacity : 1079 \rOwner.Operator : Shubert Organization \rCurrent.production : The Humans \rType : Play \rOpened : 2016-02-18February 18, 2016 \rClosing : 15-Jan-17 \ryoutube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=The humans play broadway\" frameborder=\"0\" allowfullscreen></iframe> \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|FF4500|10|b|15"), 
+  zIndex: null }); 
+markerstheaterxgeo779.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(40.7623955,-73.9851266),
+ map:map,
+ title:"id : 16 \rMusical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/Wicked.jpg?token=AUWyJ1RRovikaZMlPMM1KNbDYEvuum2Mks5YUFffwA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> \rTheatre : Gershwin Theatre \rAddress : W. 51st St. (No. 222) \rCapacity : 1933 \rOwner.Operator : Nederlander Organization \rCurrent.production : Wicked \rType : Musical \rOpened : 2003-10-30October 30, 2003 \rClosing : Open-ended \ryoutube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=Wicked musical\" frameborder=\"0\" allowfullscreen></iframe> \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|FF4500|10|b|16"), 
+  zIndex: null }); 
+markerstheaterxgeo779.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(40.7578637,-73.987835),
+ map:map,
+ title:"id : 17 \rMusical.Poster :  \rTheatre : Helen Hayes Theatre \rAddress : W. 44th St. (No. 240) \rCapacity : 597 \rOwner.Operator : Second Stage Theatre \rCurrent.production :  \rType :  \rOpened :  \rClosing :  \ryoutube :  \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|FF4500|10|b|17"), 
+  zIndex: null }); 
+markerstheaterxgeo779.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(40.7568066,-73.9847398),
+ map:map,
+ title:"id : 18 \rMusical.Poster :  \rTheatre : Hudson Theatre \rAddress : W. 44th St. (No. 141) \rCapacity : 970 \rOwner.Operator : Ambassador Theatre Group \rCurrent.production :  \rType :  \rOpened :  \rClosing :  \ryoutube :  \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|FF4500|10|b|18"), 
+  zIndex: null }); 
+markerstheaterxgeo779.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(40.7590146,-73.9874373),
+ map:map,
+ title:"id : 19 \rMusical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/Natasha%2C%20Pierre%20%26%20The%20Great%20Comet%20of%201812.jpg?token=AUWyJ5hATs7LtiWRLQQlzpBWvDk9KMORks5YUFgYwA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> \rTheatre : Imperial Theatre \rAddress : W. 45th St. (No. 249) \rCapacity : 1443 \rOwner.Operator : Shubert Organization \rCurrent.production : Natasha, Pierre & The Great Comet of 1812 \rType : Musical \rOpened : 2016-11-14November 14, 2016 \rClosing : Open-ended \ryoutube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=Natasha, Pierre & The Great Comet of 1812\" frameborder=\"0\" allowfullscreen></iframe> \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|FF4500|10|b|19"), 
+  zIndex: null }); 
+markerstheaterxgeo779.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(40.7587209,-73.9879687),
+ map:map,
+ title:"id : 20 \rMusical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/The%20Encounter.jpg?token=AUWyJx9Nqlw_O_2fiK85EGAQMS-JTJoIks5YUFg3wA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> \rTheatre : John Golden Theatre \rAddress : W. 45th St. (No. 252) \rCapacity : 805 \rOwner.Operator : Shubert Organization \rCurrent.production : The Encounter \rType : Play \rOpened : 2016-09-29September 29, 2016 \rClosing : 2017-01-08January 8, 2017 \ryoutube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=The encounter play\" frameborder=\"0\" allowfullscreen></iframe> \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|FF4500|10|b|20"), 
+  zIndex: null }); 
+markerstheaterxgeo779.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(40.7603634,-73.9859744),
+ map:map,
+ title:"id : 21 \rMusical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/A%20Bronx%20Tale%20The%20Musical.jpg?token=AUWyJz2mSo8j79rf91QodbMTXeIBk4QEks5YUFhKwA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> \rTheatre : Longacre Theatre \rAddress : W. 48th St. (No. 220) \rCapacity : 1091 \rOwner.Operator : Shubert Organization \rCurrent.production : A Bronx Tale \rType : Musical \rOpened : 2016-12-01December 1, 2016 \rClosing : Open-ended \ryoutube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=A Bronx Tale musical\" frameborder=\"0\" allowfullscreen></iframe> \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|FF4500|10|b|21"), 
+  zIndex: null }); 
+markerstheaterxgeo779.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(40.7592059,-73.9859252),
+ map:map,
+ title:"id : 22 \rMusical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/shows_img/Charlie%20and%20the%20Chocolate%20Factory.jpg?token=AUWyJ184rDqvM04HljjC3lGdvwt9f2Daks5YUFiYwA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> \rTheatre : Lunt-Fontanne Theatre \rAddress : W. 46th St. (No. 205) \rCapacity : 1519 \rOwner.Operator : Nederlander Organization \rCurrent.production : Charlie and the Chocolate Factory \rType : Musical \rOpened : 2017-04-23April 23, 2017* \rClosing : Open-ended \ryoutube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=Charlie and the Chocolate Factory broadway musical\" frameborder=\"0\" allowfullscreen></iframe> \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|FF4500|10|b|22"), 
+  zIndex: null }); 
+markerstheaterxgeo779.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(40.7577766,-73.9845441),
+ map:map,
+ title:"id : 23 \rMusical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/Oh%2C%20Hello%20on%20Broadway.jpg?token=AUWyJ2KJol0L5iOX2SAf5C3NScId6aYLks5YUFi1wA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> \rTheatre : Lyceum Theatre \rAddress : W. 45th St. (No. 149) \rCapacity : 922 \rOwner.Operator : Shubert Organization \rCurrent.production : Oh, Hello on Broadway \rType : Play \rOpened : 2016-10-10October 10, 2016 \rClosing : 2017-01-22January 22, 2017 \ryoutube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=Oh, Hello on Broadway play\" frameborder=\"0\" allowfullscreen></iframe> \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|FF4500|10|b|23"), 
+  zIndex: null }); 
+markerstheaterxgeo779.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(40.7565988,-73.9876849),
+ map:map,
+ title:"id : 24 \rMusical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/Cirque%20du%20Soleil%20Paramour.jpg?token=AUWyJ34XqAZ3sQaFj7smc9EyRu2ur-Fhks5YUFjuwA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> \rTheatre : Lyric Theatre \rAddress : W. 42nd St. (No. 213) \rCapacity : 1938 \rOwner.Operator : Ambassador Theatre Group \rCurrent.production : Paramour \rType : Musical \rOpened : 2016-05-25May 25, 2016 \rClosing : 2017-04-16April 16, 2017 \ryoutube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=Paramour broadway musical\" frameborder=\"0\" allowfullscreen></iframe> \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|FF4500|10|b|24"), 
+  zIndex: null }); 
+markerstheaterxgeo779.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(40.7583862,-73.9881585),
+ map:map,
+ title:"id : 25 \rMusical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/The%20Phantom%20of%20the%20Opera.jpg?token=AUWyJ0Y7yTRwjNuwMLzBakYZuz5C8H7qks5YUFkSwA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> \rTheatre : Majestic Theatre \rAddress : W. 44th St. (No. 247) \rCapacity : 1645 \rOwner.Operator : Shubert Organization \rCurrent.production : The Phantom of the Opera \rType : Musical \rOpened : 1988-01-26January 26, 1988 \rClosing : Open-ended \ryoutube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=The phantom of the opera broadway\" frameborder=\"0\" allowfullscreen></iframe> \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|FF4500|10|b|25"), 
+  zIndex: null }); 
+markerstheaterxgeo779.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(40.7586115,-73.9862475),
+ map:map,
+ title:"id : 26 \rMusical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/On%20Your%20Feet!.jpg?token=AUWyJ9ibZXQ4bHBq0hLZtxT8zBCH4jAFks5YUFkswA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> \rTheatre : Marquis Theatre \rAddress : Broadway (No. 1535) \rCapacity : 1612 \rOwner.Operator : Nederlander Organization \rCurrent.production : On Your Feet! \rType : Musical \rOpened : 2015-11-05November 5, 2015 \rClosing : Open-ended \ryoutube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=On your feet broadway musical\" frameborder=\"0\" allowfullscreen></iframe> \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|FF4500|10|b|26"), 
+  zIndex: null }); 
+markerstheaterxgeo779.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(40.7578273,-73.9860017),
+ map:map,
+ title:"id : 27 \rMusical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/The%20Lion%20King.jpg?token=AUWyJ9C-vOb28jbOVdVeZmU-JEmQlHttks5YUFlGwA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> \rTheatre : Minskoff Theatre \rAddress : W. 45th St. (No. 200) \rCapacity : 1710 \rOwner.Operator : Nederlander Organization \rCurrent.production : The Lion King \rType : Musical \rOpened : 1997-11-13November 13, 1997 \rClosing : Open-ended \ryoutube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=The lion king broadway musical\" frameborder=\"0\" allowfullscreen></iframe> \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|FF4500|10|b|27"), 
+  zIndex: null }); 
+markerstheaterxgeo779.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(40.758881,-73.987128),
+ map:map,
+ title:"id : 28 \rMusical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/Dear%20Evan%20Hansen.jpg?token=AUWyJ0h4PHTzC1HqbSyNyDHRqB-F7fokks5YUFltwA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> \rTheatre : Music Box Theatre \rAddress : W. 45th St. (No. 239) \rCapacity : 1009 \rOwner.Operator : Shubert Organization \rCurrent.production : Dear Evan Hansen \rType : Musical \rOpened : 2016-12-04December 4, 2016 \rClosing : Open-ended \ryoutube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=Dear Evan Hansen broadway musical\" frameborder=\"0\" allowfullscreen></iframe> \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|FF4500|10|b|28"), 
+  zIndex: null }); 
+markerstheaterxgeo779.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(40.755506,-73.9882992),
+ map:map,
+ title:"id : 29 \rMusical.Poster :  \rTheatre : Nederlander Theatre \rAddress : W. 41st St. (No. 208) \rCapacity : 1235 \rOwner.Operator : Nederlander Organization \rCurrent.production : War Paint \rType : Musical \rOpened : 2017-04-06April 6, 2017* \rClosing : Open-ended \ryoutube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=War Paint broadway musical\" frameborder=\"0\" allowfullscreen></iframe> \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|FF4500|10|b|29"), 
+  zIndex: null }); 
+markerstheaterxgeo779.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(40.7630894,-73.9846554),
+ map:map,
+ title:"id : 30 \rMusical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/Cats.jpg?token=AUWyJ2gh7V3e54cpgtLKZQKjVbJKij64ks5YUFmWwA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> \rTheatre : Neil Simon Theatre \rAddress : W. 52nd St. (No. 250) \rCapacity : 1467 \rOwner.Operator : Nederlander Organization \rCurrent.production : Cats \rType : Musical \rOpened : 2016-07-31July 31, 2016 \rClosing : Open-ended \ryoutube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=Cats broadway musical\" frameborder=\"0\" allowfullscreen></iframe> \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|FF4500|10|b|30"), 
+  zIndex: null }); 
+markerstheaterxgeo779.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(40.7561111,-73.9879339),
+ map:map,
+ title:"id : 31 \rMusical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/Aladdin.jpg?token=AUWyJ-e3hjYs8ZFqJCEiDV-0J72WWBCkks5YUFm0wA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> \rTheatre : New Amsterdam Theatre \rAddress : W. 42nd St. (No. 214) \rCapacity : 1747 \rOwner.Operator : Disney Theatrical Group \rCurrent.production : Aladdin \rType : Musical \rOpened : 2014-03-20March 20, 2014 \rClosing : Open-ended \ryoutube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=Aladdin broadway musical\" frameborder=\"0\" allowfullscreen></iframe> \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|FF4500|10|b|31"), 
+  zIndex: null }); 
+markerstheaterxgeo779.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(40.7588889,-73.9845512),
+ map:map,
+ title:"id : 32 \rMusical.Poster :  \rTheatre : Palace Theatre \rAddress : Broadway (No. 1564) \rCapacity : 1743 \rOwner.Operator : Nederlander Organization \rCurrent.production : The Illusionists Turn of the Century \rType : Magic \rOpened : 2016-11-25November 25, 2016 \rClosing : 2017-01-01January 1, 2017 \ryoutube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=The Illusionists Turn of the Century magic\" frameborder=\"0\" allowfullscreen></iframe> \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|FF4500|10|b|32"), 
+  zIndex: null }); 
+markerstheaterxgeo779.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(40.7590168,-73.9866977),
+ map:map,
+ title:"id : 33 \rMusical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/Hamilton.jpg?token=AUWyJ9UuQI249VeC7x8RI0pBu94FzqJHks5YUFnkwA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> \rTheatre : Richard Rodgers Theatre \rAddress : W. 46th St. (No. 226) \rCapacity : 1400 \rOwner.Operator : Nederlander Organization \rCurrent.production : Hamilton \rType : Musical \rOpened : 2015-08-06August 6, 2015 \rClosing : Open-ended \ryoutube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=Hamilton broadway musical\" frameborder=\"0\" allowfullscreen></iframe> \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|FF4500|10|b|33"), 
+  zIndex: null }); 
+markerstheaterxgeo779.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(40.7580098,-73.9881401),
+ map:map,
+ title:"id : 34 \rMusical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/Something%20Rotten!.jpg?token=AUWyJxF2jr9_THQlzkAzAiBafUniGnc5ks5YUFoKwA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> \rTheatre : St. James Theatre \rAddress : W. 44th St. (No. 246) \rCapacity : 1709 \rOwner.Operator : Jujamcyn Theaters \rCurrent.production : Something Rotten! \rType : Musical \rOpened : 2015-04-22April 22, 2015 \rClosing : 2017-01-01January 1, 2017 \ryoutube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=Something rotten broadway musical\" frameborder=\"0\" allowfullscreen></iframe> \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|FF4500|10|b|34"), 
+  zIndex: null }); 
+markerstheaterxgeo779.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(40.7603884,-73.9867173),
+ map:map,
+ title:"id : 35 \rMusical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/Heisenberg.jpg?token=AUWyJzee4me3ya0ODA5SFLoco7SzVhlfks5YUFowwA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> \rTheatre : Samuel J. Friedman Theatre \rAddress : W. 47th St. (No. 261) \rCapacity : 650 \rOwner.Operator : Manhattan Theatre Club \rCurrent.production : Heisenberg \rType : Play \rOpened : 2016-10-13October 13, 2016 \rClosing : 2016-12-11December 11, 2016 \ryoutube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=Heisenberg broadway musical\" frameborder=\"0\" allowfullscreen></iframe> \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|FF4500|10|b|35"), 
+  zIndex: null }); 
+markerstheaterxgeo779.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(40.7580922,-73.9871606),
+ map:map,
+ title:"id : 36 \rMusical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/shows_img/Matilda.jpg?token=AUWyJwjj_UJpjNQQcov6WsuZgpGIdxxvks5YUFp2wA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> \rTheatre : Shubert Theatre \rAddress : W. 44th St. (No. 225) \rCapacity : 1460 \rOwner.Operator : Shubert Organization \rCurrent.production : Matilda the Musical \rType : Musical \rOpened : 2013-04-11April 11, 2013 \rClosing : 2017-01-01January 1, 2017 \ryoutube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=Matilda the musical broadway\" frameborder=\"0\" allowfullscreen></iframe> \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|FF4500|10|b|36"), 
+  zIndex: null }); 
+markerstheaterxgeo779.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(40.7558477,-73.9849035),
+ map:map,
+ title:"id : 37 \rMusical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/Beautiful%20The%20Carole%20King%20Musical.jpg?token=AUWyJ174Bk3vyR0gSsqGBalGZkUBCEAwks5YUFqlwA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> \rTheatre : Stephen Sondheim Theatre \rAddress : W. 43rd St. (No. 124) \rCapacity : 1055 \rOwner.Operator : Roundabout Theatre Company \rCurrent.production : Beautiful: The Carole King Musical \rType : Musical \rOpened : 2014-01-12January 12, 2014 \rClosing : Open-ended \ryoutube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=Beautiful The Carole King Musical\" frameborder=\"0\" allowfullscreen></iframe> \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|FF4500|10|b|37"), 
+  zIndex: null }); 
+markerstheaterxgeo779.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(40.7643535,-73.9837815),
+ map:map,
+ title:"id : 38 \rMusical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/Holiday%20Inn%2C%20The%20New%20Irving%20Berlin%20Musical.jpg?token=AUWyJ255UaYd5xoeukEvwzUELlX_LZp5ks5YUFrRwA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> \rTheatre : Studio 54 \rAddress : W. 54th St. (No. 254) \rCapacity : 1006 \rOwner.Operator : Roundabout Theatre Company \rCurrent.production : Holiday Inn \rType : Musical \rOpened : 2016-10-06October 6, 2016 \rClosing : 2017-01-15January 15, 2017 \ryoutube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=Holiday Inn broadway musical\" frameborder=\"0\" allowfullscreen></iframe> \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|FF4500|10|b|38"), 
+  zIndex: null }); 
+markerstheaterxgeo779.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(40.7735954,-73.9840268),
+ map:map,
+ title:"id : 39 \rMusical.Poster :  \rTheatre : Vivian Beaumont Theater \rAddress : W. 65th St. (No. 150) \rCapacity : 1080 \rOwner.Operator : Lincoln Center Theatre \rCurrent.production : Oslo \rType : Play \rOpened : 2017-04-13April 13, 2017* \rClosing : Open-ended \ryoutube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=Oslo broadway play\" frameborder=\"0\" allowfullscreen></iframe> \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|FF4500|10|b|39"), 
+  zIndex: null }); 
+markerstheaterxgeo779.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(40.760724,-73.9856673),
+ map:map,
+ title:"id : 40 \rMusical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/Falsettos.jpg?token=AUWyJ_gj4pZ8ian20757Zqe2TP158eGzks5YUFsbwA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> \rTheatre : Walter Kerr Theatre \rAddress : W. 48th St. (No. 219) \rCapacity : 945 \rOwner.Operator : Jujamcyn Theaters \rCurrent.production : Falsettos \rType : Musical \rOpened : 2016-10-27October 27, 2016 \rClosing : 2017-01-08January 8, 2017 \ryoutube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=Falsettos broadway musical\" frameborder=\"0\" allowfullscreen></iframe> \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|FF4500|10|b|40"), 
+  zIndex: null }); 
+markerstheaterxgeo779.push(marker); 
+
+var  marker = new google.maps.Marker({ 
+ position: new google.maps.LatLng(40.7617484,-73.983583),
+ map:map,
+ title:"id : 41 \rMusical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/School%20of%20Rock%20%E2%80%93%20The%20Musical.jpg?token=AUWyJ4ee2UJq3CtARmyMtSnsZvWWDYj4ks5YUFtUwA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> \rTheatre : Winter Garden Theatre \rAddress : Broadway (No. 1634) \rCapacity : 1526 \rOwner.Operator : Shubert Organization \rCurrent.production : School of Rock \rType : Musical \rOpened : 2015-12-06December 6, 2015 \rClosing : Open-ended \ryoutube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=School of rock broadway musical\" frameborder=\"0\" allowfullscreen></iframe> \r",
+ clickable: true,
+ draggable: false,
+ flat: true,
+ visible: true,
+ icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_spin&chld=0.6|0|FF4500|10|b|41"), 
+  zIndex: null }); 
+markerstheaterxgeo779.push(marker); 
+
+function showR(R,boxname, map) {
+  R.setMap(map);
+  document.getElementById(boxname).checked = true; }
+
+function hideR(R,boxname) {
+R.setMap(null);
+document.getElementById(boxname).checked = false; }
+
+function showO(MLPArray,boxname, map ) { 
+for (var i = 0; i < MLPArray.length; i++) { 
+MLPArray[i].setMap(map); } 
+document.getElementById(boxname).checked = true; }
+
+function hideO(MLPArray,boxname) { 
+for (var i = 0; i < MLPArray.length; i++) { 
+MLPArray[i].setMap(null);} 
+document.getElementById(boxname).checked = false; } 
+
+function boxclick(box,MLPArray,boxname, map) { 
+if (box.checked) { showO(MLPArray,boxname, map); 
+}else {  hideO(MLPArray,boxname);} }
+
+function setOpac(MLPArray,textname){
+opacity=0.01*parseInt(document.getElementById(textname).value) 
+for(var i = 0; i < MLPArray.length; i++) {
+MLPArray[i].setOptions({strokeOpacity: opacity, fillOpacity: opacity}); }}
+
+function setOpacL(MLPArray,textname) {
+opacity=0.01*parseInt(document.getElementById(textname).value) 
+for (var i = 0; i < MLPArray.length; i++) {
+MLPArray[i].setOptions({strokeOpacity: opacity});}}
+
+function setLineWeight(MLPArray,textnameW){
+weight=parseInt(document.getElementById(textnameW).value)
+for (var i = 0; i < MLPArray.length; i++){
+MLPArray[i].setOptions({strokeWeight: weight}); } }
+
+function legendDisplay(box,divLegendImage){
+element = document.getElementById(divLegendImage).style;
+if (box.checked){ element.display="block";} else {  element.display="none";}}
+
+function boxclickR(box,R,boxname, map) {
+if (box.checked){
+showR(R,boxname,map); } else { hideR(R,boxname);} }
+
+function legendDisplay(box,divLegendImage){
+element = document.getElementById(divLegendImage).style; 
+if (box.checked){ element.display="block";} else {  element.display="none";}}  
+ function initialize() { 
+ var latlng = new google.maps.LatLng( 40.7645507 , -73.986135 ) ; 
+ 
+ var myOptions = { zoom: 15 , 
+ center: latlng , 
+ mapTypeId: google.maps.MapTypeId.TERRAIN  ,
+ disableDefaultUI: false  ,
+ disableDoubleClickZoom: false  ,
+  draggable: true  ,
+  keyboardShortcuts:  true  ,
+ mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DEFAULT}  ,
+  navigationControl: true  ,
+ navigationControlOptions: {style: google.maps.NavigationControlStyle.DEFAULT}  ,
+ noClear: false  ,
+ scaleControl: true  ,
+ scaleControlOptions: {style: google.maps.ScaleControlStyle.STANDARD}  ,
+  scrollwheel: true  ,
+ streetViewControl: false } ; 
+ 
+ map= new google.maps.Map(document.getElementById("map_canvas"),myOptions); 
+ map.fitBounds(new google.maps.LatLngBounds(
+ new google.maps.LatLng(40.755506,-73.9892012),
+ new google.maps.LatLng( 40.7735954,-73.9830688)));   var infowindow = new google.maps.InfoWindow({ content: "", disableAutoPan:false, maxWidth :330, pixelOffset :null  }); 
+ google.maps.event.addListener(markerstheaterxgeo779[0] ,"click",function(event){ 
+
+ infowindow.setContent("id : 1 <br>Musical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/Kinky%20Boots.jpg?token=AUWyJycs1txVoVAkOKWL9sr9P69wqkczks5YUFAmwA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> <br>Theatre : Al Hirschfeld Theatre <br>Address : W. 45th St. (No. 302) <br>Capacity : 1424 <br>Owner.Operator : Jujamcyn Theaters <br>Current.production : Kinky Boots <br>Type : Musical <br>Opened : 2013-04-04April 4, 2013 <br>Closing : Open-ended <br>youtube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=Kinky Boots Musical\" frameborder=\"0\" allowfullscreen></iframe> <br>"); 
+
+ infowindow.setPosition(event.latLng);
+infowindow.open(map,markerstheaterxgeo779[0] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "", disableAutoPan:false, maxWidth :330, pixelOffset :null  }); 
+ google.maps.event.addListener(markerstheaterxgeo779[1] ,"click",function(event){ 
+
+ infowindow.setContent("id : 2 <br>Musical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/Chicago.jpg?token=AUWyJ6zrnVFd4x5bTS2cQFcaqb9yFNBIks5YUFXLwA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> <br>Theatre : Ambassador Theatre <br>Address : W. 49th St. (No. 219) <br>Capacity : 1125 <br>Owner.Operator : Shubert Organization <br>Current.production : Chicago <br>Type : Musical <br>Opened : 1996-11-14November 14, 1996 <br>Closing : Open-ended <br>youtube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=Chicago Musical\" frameborder=\"0\" allowfullscreen></iframe> <br>"); 
+
+ infowindow.setPosition(event.latLng);
+infowindow.open(map,markerstheaterxgeo779[1] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "", disableAutoPan:false, maxWidth :330, pixelOffset :null  }); 
+ google.maps.event.addListener(markerstheaterxgeo779[2] ,"click",function(event){ 
+
+ infowindow.setContent("id : 3 <br>Musical.Poster :  <br>Theatre : American Airlines Theatre <br>Address : W. 42nd St. (No. 229) <br>Capacity : 740 <br>Owner.Operator : Roundabout Theatre Company <br>Current.production : The Price <br>Type : Play <br>Opened : 2017-03-16March 16, 2017* <br>Closing : 2017-05-07May 7, 2017 <br>youtube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=The Price play\" frameborder=\"0\" allowfullscreen></iframe> <br>"); 
+
+ infowindow.setPosition(event.latLng);
+infowindow.open(map,markerstheaterxgeo779[2] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "", disableAutoPan:false, maxWidth :330, pixelOffset :null  }); 
+ google.maps.event.addListener(markerstheaterxgeo779[3] ,"click",function(event){ 
+
+ infowindow.setContent("id : 4 <br>Musical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/Jersey%20Boys.jpg?token=AUWyJ_TNtZu9CMpZhUvXO_vNADGeTrZ4ks5YUFbZwA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> <br>Theatre : August Wilson Theatre <br>Address : W. 52nd St. (No. 245) <br>Capacity : 1228 <br>Owner.Operator : Jujamcyn Theaters <br>Current.production : Jersey Boys <br>Type : Musical <br>Opened : 2005-11-06November 6, 2005 <br>Closing : 2017-01-15January 15, 2017 <br>youtube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=Jersey Boys musical\" frameborder=\"0\" allowfullscreen></iframe> <br>"); 
+
+ infowindow.setPosition(event.latLng);
+infowindow.open(map,markerstheaterxgeo779[3] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "", disableAutoPan:false, maxWidth :330, pixelOffset :null  }); 
+ google.maps.event.addListener(markerstheaterxgeo779[4] ,"click",function(event){ 
+
+ infowindow.setContent("id : 5 <br>Musical.Poster :  <br>Theatre : Belasco Theatre <br>Address : W. 44th St. (No. 111) <br>Capacity : 1018 <br>Owner.Operator : Shubert Organization <br>Current.production : The Glass Menagerie <br>Type : Play <br>Opened : 2017-03-09March 9, 2017* <br>Closing : 2017-07-02July 2, 2017 <br>youtube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=The Glass Menagerie play\" frameborder=\"0\" allowfullscreen></iframe> <br>"); 
+
+ infowindow.setPosition(event.latLng);
+infowindow.open(map,markerstheaterxgeo779[4] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "", disableAutoPan:false, maxWidth :330, pixelOffset :null  }); 
+ google.maps.event.addListener(markerstheaterxgeo779[5] ,"click",function(event){ 
+
+ infowindow.setContent("id : 6 <br>Musical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/The%20Color%20Purple.jpg?token=AUWyJyVbJZ-JN2u_HxvPkY8865AuonZhks5YUFcTwA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> <br>Theatre : Bernard B. Jacobs Theatre <br>Address : W. 45th St. (No. 242) <br>Capacity : 1078 <br>Owner.Operator : Shubert Organization <br>Current.production : The Color Purple <br>Type : Musical <br>Opened : 2015-12-10December 10, 2015 <br>Closing : 2017-01-08January 8, 2017 <br>youtube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=The Color Purple musical\" frameborder=\"0\" allowfullscreen></iframe> <br>"); 
+
+ infowindow.setPosition(event.latLng);
+infowindow.open(map,markerstheaterxgeo779[5] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "", disableAutoPan:false, maxWidth :330, pixelOffset :null  }); 
+ google.maps.event.addListener(markerstheaterxgeo779[6] ,"click",function(event){ 
+
+ infowindow.setContent("id : 7 <br>Musical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/Les%20Liaisons%20Dangereuses.jpg?token=AUWyJ4j1oJKvLq2O1lsAeyYGcvmJ_-3_ks5YUFujwA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> <br>Theatre : Booth Theatre <br>Address : W. 45th St. (No. 222) <br>Capacity : 766 <br>Owner.Operator : Shubert Organization <br>Current.production : Les Liaisons Dangereuses <br>Type : Play <br>Opened : 2016-10-30October 30, 2016 <br>Closing : 2017-01-08January 8, 2017 <br>youtube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=Les Liaisons Dangereuses\" frameborder=\"0\" allowfullscreen></iframe> <br>"); 
+
+ infowindow.setPosition(event.latLng);
+infowindow.open(map,markerstheaterxgeo779[6] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "", disableAutoPan:false, maxWidth :330, pixelOffset :null  }); 
+ google.maps.event.addListener(markerstheaterxgeo779[7] ,"click",function(event){ 
+
+ infowindow.setContent("id : 8 <br>Musical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/The%20Front%20Page.jpg?token=AUWyJ2Z2mbTiCYAl3SiHfbxRzj1tA9H9ks5YUFvKwA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> <br>Theatre : Broadhurst Theatre <br>Address : W. 44th St. (No. 235) <br>Capacity : 1186 <br>Owner.Operator : Shubert Organization <br>Current.production : The Front Page <br>Type : Play <br>Opened : 2016-10-20October 20, 2016 <br>Closing : 2017-01-29January 29, 2017 <br>youtube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=The front page play\" frameborder=\"0\" allowfullscreen></iframe> <br>"); 
+
+ infowindow.setPosition(event.latLng);
+infowindow.open(map,markerstheaterxgeo779[7] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "", disableAutoPan:false, maxWidth :330, pixelOffset :null  }); 
+ google.maps.event.addListener(markerstheaterxgeo779[8] ,"click",function(event){ 
+
+ infowindow.setContent("id : 9 <br>Musical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/Fiddler%20on%20the%20Roof.jpg?token=AUWyJyAn5XZBcDE19UfktMjCF6txPARXks5YUFc7wA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> <br>Theatre : Broadway Theatre <br>Address : Broadway (No. 1681) <br>Capacity : 1761 <br>Owner.Operator : Shubert Organization <br>Current.production : Fiddler on the Roof <br>Type : Musical <br>Opened : 2015-12-20December 20, 2015 <br>Closing : 2016-12-31December 31, 2016 <br>youtube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=Fiddler on the roof musical\" frameborder=\"0\" allowfullscreen></iframe> <br>"); 
+
+ infowindow.setPosition(event.latLng);
+infowindow.open(map,markerstheaterxgeo779[8] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "", disableAutoPan:false, maxWidth :330, pixelOffset :null  }); 
+ google.maps.event.addListener(markerstheaterxgeo779[9] ,"click",function(event){ 
+
+ infowindow.setContent("id : 10 <br>Musical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/Waitress.jpg?token=AUWyJyVGAVxhW1xRpbNUmhkH_QzB94VIks5YUFdawA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> <br>Theatre : Brooks Atkinson Theatre <br>Address : W. 47th St. (No. 256) <br>Capacity : 1094 <br>Owner.Operator : Nederlander Organization <br>Current.production : Waitress <br>Type : Musical <br>Opened : 2016-04-24April 24, 2016 <br>Closing : Open-ended <br>youtube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=Waitress musical\" frameborder=\"0\" allowfullscreen></iframe> <br>"); 
+
+ infowindow.setPosition(event.latLng);
+infowindow.open(map,markerstheaterxgeo779[9] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "", disableAutoPan:false, maxWidth :330, pixelOffset :null  }); 
+ google.maps.event.addListener(markerstheaterxgeo779[10] ,"click",function(event){ 
+
+ infowindow.setContent("id : 11 <br>Musical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/In%20Transit.jpg?token=AUWyJ50XiKuPLyWrM8qedDbH-bOGWYsfks5YUFd9wA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> <br>Theatre : Circle in the Square Theatre <br>Address : W. 50th St. (No. 235) <br>Capacity : 840 <br>Owner.Operator : Independent <br>Current.production : In Transit <br>Type : Musical <br>Opened : 2016-12-11December 11, 2016* <br>Closing : Open-ended <br>youtube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=In transit musical\" frameborder=\"0\" allowfullscreen></iframe> <br>"); 
+
+ infowindow.setPosition(event.latLng);
+infowindow.open(map,markerstheaterxgeo779[10] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "", disableAutoPan:false, maxWidth :330, pixelOffset :null  }); 
+ google.maps.event.addListener(markerstheaterxgeo779[11] ,"click",function(event){ 
+
+ infowindow.setContent("id : 12 <br>Musical.Poster :  <br>Theatre : Cort Theatre <br>Address : W. 48th St. (No. 138) <br>Capacity : 1084 <br>Owner.Operator : Shubert Organization <br>Current.production : Indecent <br>Type : Play <br>Opened : 2017-04-18April 18, 2017* <br>Closing : Open-ended <br>youtube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=Indecent play\" frameborder=\"0\" allowfullscreen></iframe> <br>"); 
+
+ infowindow.setPosition(event.latLng);
+infowindow.open(map,markerstheaterxgeo779[11] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "", disableAutoPan:false, maxWidth :330, pixelOffset :null  }); 
+ google.maps.event.addListener(markerstheaterxgeo779[12] ,"click",function(event){ 
+
+ infowindow.setContent("id : 13 <br>Musical.Poster :  <br>Theatre : Ethel Barrymore Theatre <br>Address : W. 47th St. (No. 243) <br>Capacity : 1096 <br>Owner.Operator : Shubert Organization <br>Current.production : The Present <br>Type : Play <br>Opened : 2017-01-08January 8, 2017* <br>Closing : 2017-03-19March 19, 2017 <br>youtube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=The present play\" frameborder=\"0\" allowfullscreen></iframe> <br>"); 
+
+ infowindow.setPosition(event.latLng);
+infowindow.open(map,markerstheaterxgeo779[12] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "", disableAutoPan:false, maxWidth :330, pixelOffset :null  }); 
+ google.maps.event.addListener(markerstheaterxgeo779[13] ,"click",function(event){ 
+
+ infowindow.setContent("id : 14 <br>Musical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/The%20Book%20of%20Mormon.jpg?token=AUWyJ3PzK3uF3lQXGXcuRZIHY4qmVJtZks5YUFecwA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> <br>Theatre : Eugene O'Neill Theatre <br>Address : W. 49th St. (No. 230) <br>Capacity : 1066 <br>Owner.Operator : Jujamcyn Theaters <br>Current.production : The Book of Mormon <br>Type : Musical <br>Opened : 2011-03-24March 24, 2011 <br>Closing : Open-ended <br>youtube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=The book of mormon musical\" frameborder=\"0\" allowfullscreen></iframe> <br>"); 
+
+ infowindow.setPosition(event.latLng);
+infowindow.open(map,markerstheaterxgeo779[13] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "", disableAutoPan:false, maxWidth :330, pixelOffset :null  }); 
+ google.maps.event.addListener(markerstheaterxgeo779[14] ,"click",function(event){ 
+
+ infowindow.setContent("id : 15 <br>Musical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/The%20Humans.jpg?token=AUWyJ8Jl44-iu85P4XY8bB-BCBD0Widwks5YUFe8wA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> <br>Theatre : Gerald Schoenfeld Theatre <br>Address : W. 45th St. (No. 236) <br>Capacity : 1079 <br>Owner.Operator : Shubert Organization <br>Current.production : The Humans <br>Type : Play <br>Opened : 2016-02-18February 18, 2016 <br>Closing : 15-Jan-17 <br>youtube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=The humans play broadway\" frameborder=\"0\" allowfullscreen></iframe> <br>"); 
+
+ infowindow.setPosition(event.latLng);
+infowindow.open(map,markerstheaterxgeo779[14] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "", disableAutoPan:false, maxWidth :330, pixelOffset :null  }); 
+ google.maps.event.addListener(markerstheaterxgeo779[15] ,"click",function(event){ 
+
+ infowindow.setContent("id : 16 <br>Musical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/Wicked.jpg?token=AUWyJ1RRovikaZMlPMM1KNbDYEvuum2Mks5YUFffwA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> <br>Theatre : Gershwin Theatre <br>Address : W. 51st St. (No. 222) <br>Capacity : 1933 <br>Owner.Operator : Nederlander Organization <br>Current.production : Wicked <br>Type : Musical <br>Opened : 2003-10-30October 30, 2003 <br>Closing : Open-ended <br>youtube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=Wicked musical\" frameborder=\"0\" allowfullscreen></iframe> <br>"); 
+
+ infowindow.setPosition(event.latLng);
+infowindow.open(map,markerstheaterxgeo779[15] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "", disableAutoPan:false, maxWidth :330, pixelOffset :null  }); 
+ google.maps.event.addListener(markerstheaterxgeo779[16] ,"click",function(event){ 
+
+ infowindow.setContent("id : 17 <br>Musical.Poster :  <br>Theatre : Helen Hayes Theatre <br>Address : W. 44th St. (No. 240) <br>Capacity : 597 <br>Owner.Operator : Second Stage Theatre <br>Current.production :  <br>Type :  <br>Opened :  <br>Closing :  <br>youtube :  <br>"); 
+
+ infowindow.setPosition(event.latLng);
+infowindow.open(map,markerstheaterxgeo779[16] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "", disableAutoPan:false, maxWidth :330, pixelOffset :null  }); 
+ google.maps.event.addListener(markerstheaterxgeo779[17] ,"click",function(event){ 
+
+ infowindow.setContent("id : 18 <br>Musical.Poster :  <br>Theatre : Hudson Theatre <br>Address : W. 44th St. (No. 141) <br>Capacity : 970 <br>Owner.Operator : Ambassador Theatre Group <br>Current.production :  <br>Type :  <br>Opened :  <br>Closing :  <br>youtube :  <br>"); 
+
+ infowindow.setPosition(event.latLng);
+infowindow.open(map,markerstheaterxgeo779[17] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "", disableAutoPan:false, maxWidth :330, pixelOffset :null  }); 
+ google.maps.event.addListener(markerstheaterxgeo779[18] ,"click",function(event){ 
+
+ infowindow.setContent("id : 19 <br>Musical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/Natasha%2C%20Pierre%20%26%20The%20Great%20Comet%20of%201812.jpg?token=AUWyJ5hATs7LtiWRLQQlzpBWvDk9KMORks5YUFgYwA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> <br>Theatre : Imperial Theatre <br>Address : W. 45th St. (No. 249) <br>Capacity : 1443 <br>Owner.Operator : Shubert Organization <br>Current.production : Natasha, Pierre & The Great Comet of 1812 <br>Type : Musical <br>Opened : 2016-11-14November 14, 2016 <br>Closing : Open-ended <br>youtube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=Natasha, Pierre & The Great Comet of 1812\" frameborder=\"0\" allowfullscreen></iframe> <br>"); 
+
+ infowindow.setPosition(event.latLng);
+infowindow.open(map,markerstheaterxgeo779[18] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "", disableAutoPan:false, maxWidth :330, pixelOffset :null  }); 
+ google.maps.event.addListener(markerstheaterxgeo779[19] ,"click",function(event){ 
+
+ infowindow.setContent("id : 20 <br>Musical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/The%20Encounter.jpg?token=AUWyJx9Nqlw_O_2fiK85EGAQMS-JTJoIks5YUFg3wA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> <br>Theatre : John Golden Theatre <br>Address : W. 45th St. (No. 252) <br>Capacity : 805 <br>Owner.Operator : Shubert Organization <br>Current.production : The Encounter <br>Type : Play <br>Opened : 2016-09-29September 29, 2016 <br>Closing : 2017-01-08January 8, 2017 <br>youtube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=The encounter play\" frameborder=\"0\" allowfullscreen></iframe> <br>"); 
+
+ infowindow.setPosition(event.latLng);
+infowindow.open(map,markerstheaterxgeo779[19] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "", disableAutoPan:false, maxWidth :330, pixelOffset :null  }); 
+ google.maps.event.addListener(markerstheaterxgeo779[20] ,"click",function(event){ 
+
+ infowindow.setContent("id : 21 <br>Musical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/A%20Bronx%20Tale%20The%20Musical.jpg?token=AUWyJz2mSo8j79rf91QodbMTXeIBk4QEks5YUFhKwA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> <br>Theatre : Longacre Theatre <br>Address : W. 48th St. (No. 220) <br>Capacity : 1091 <br>Owner.Operator : Shubert Organization <br>Current.production : A Bronx Tale <br>Type : Musical <br>Opened : 2016-12-01December 1, 2016 <br>Closing : Open-ended <br>youtube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=A Bronx Tale musical\" frameborder=\"0\" allowfullscreen></iframe> <br>"); 
+
+ infowindow.setPosition(event.latLng);
+infowindow.open(map,markerstheaterxgeo779[20] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "", disableAutoPan:false, maxWidth :330, pixelOffset :null  }); 
+ google.maps.event.addListener(markerstheaterxgeo779[21] ,"click",function(event){ 
+
+ infowindow.setContent("id : 22 <br>Musical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/shows_img/Charlie%20and%20the%20Chocolate%20Factory.jpg?token=AUWyJ184rDqvM04HljjC3lGdvwt9f2Daks5YUFiYwA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> <br>Theatre : Lunt-Fontanne Theatre <br>Address : W. 46th St. (No. 205) <br>Capacity : 1519 <br>Owner.Operator : Nederlander Organization <br>Current.production : Charlie and the Chocolate Factory <br>Type : Musical <br>Opened : 2017-04-23April 23, 2017* <br>Closing : Open-ended <br>youtube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=Charlie and the Chocolate Factory broadway musical\" frameborder=\"0\" allowfullscreen></iframe> <br>"); 
+
+ infowindow.setPosition(event.latLng);
+infowindow.open(map,markerstheaterxgeo779[21] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "", disableAutoPan:false, maxWidth :330, pixelOffset :null  }); 
+ google.maps.event.addListener(markerstheaterxgeo779[22] ,"click",function(event){ 
+
+ infowindow.setContent("id : 23 <br>Musical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/Oh%2C%20Hello%20on%20Broadway.jpg?token=AUWyJ2KJol0L5iOX2SAf5C3NScId6aYLks5YUFi1wA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> <br>Theatre : Lyceum Theatre <br>Address : W. 45th St. (No. 149) <br>Capacity : 922 <br>Owner.Operator : Shubert Organization <br>Current.production : Oh, Hello on Broadway <br>Type : Play <br>Opened : 2016-10-10October 10, 2016 <br>Closing : 2017-01-22January 22, 2017 <br>youtube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=Oh, Hello on Broadway play\" frameborder=\"0\" allowfullscreen></iframe> <br>"); 
+
+ infowindow.setPosition(event.latLng);
+infowindow.open(map,markerstheaterxgeo779[22] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "", disableAutoPan:false, maxWidth :330, pixelOffset :null  }); 
+ google.maps.event.addListener(markerstheaterxgeo779[23] ,"click",function(event){ 
+
+ infowindow.setContent("id : 24 <br>Musical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/Cirque%20du%20Soleil%20Paramour.jpg?token=AUWyJ34XqAZ3sQaFj7smc9EyRu2ur-Fhks5YUFjuwA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> <br>Theatre : Lyric Theatre <br>Address : W. 42nd St. (No. 213) <br>Capacity : 1938 <br>Owner.Operator : Ambassador Theatre Group <br>Current.production : Paramour <br>Type : Musical <br>Opened : 2016-05-25May 25, 2016 <br>Closing : 2017-04-16April 16, 2017 <br>youtube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=Paramour broadway musical\" frameborder=\"0\" allowfullscreen></iframe> <br>"); 
+
+ infowindow.setPosition(event.latLng);
+infowindow.open(map,markerstheaterxgeo779[23] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "", disableAutoPan:false, maxWidth :330, pixelOffset :null  }); 
+ google.maps.event.addListener(markerstheaterxgeo779[24] ,"click",function(event){ 
+
+ infowindow.setContent("id : 25 <br>Musical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/The%20Phantom%20of%20the%20Opera.jpg?token=AUWyJ0Y7yTRwjNuwMLzBakYZuz5C8H7qks5YUFkSwA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> <br>Theatre : Majestic Theatre <br>Address : W. 44th St. (No. 247) <br>Capacity : 1645 <br>Owner.Operator : Shubert Organization <br>Current.production : The Phantom of the Opera <br>Type : Musical <br>Opened : 1988-01-26January 26, 1988 <br>Closing : Open-ended <br>youtube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=The phantom of the opera broadway\" frameborder=\"0\" allowfullscreen></iframe> <br>"); 
+
+ infowindow.setPosition(event.latLng);
+infowindow.open(map,markerstheaterxgeo779[24] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "", disableAutoPan:false, maxWidth :330, pixelOffset :null  }); 
+ google.maps.event.addListener(markerstheaterxgeo779[25] ,"click",function(event){ 
+
+ infowindow.setContent("id : 26 <br>Musical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/On%20Your%20Feet!.jpg?token=AUWyJ9ibZXQ4bHBq0hLZtxT8zBCH4jAFks5YUFkswA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> <br>Theatre : Marquis Theatre <br>Address : Broadway (No. 1535) <br>Capacity : 1612 <br>Owner.Operator : Nederlander Organization <br>Current.production : On Your Feet! <br>Type : Musical <br>Opened : 2015-11-05November 5, 2015 <br>Closing : Open-ended <br>youtube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=On your feet broadway musical\" frameborder=\"0\" allowfullscreen></iframe> <br>"); 
+
+ infowindow.setPosition(event.latLng);
+infowindow.open(map,markerstheaterxgeo779[25] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "", disableAutoPan:false, maxWidth :330, pixelOffset :null  }); 
+ google.maps.event.addListener(markerstheaterxgeo779[26] ,"click",function(event){ 
+
+ infowindow.setContent("id : 27 <br>Musical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/The%20Lion%20King.jpg?token=AUWyJ9C-vOb28jbOVdVeZmU-JEmQlHttks5YUFlGwA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> <br>Theatre : Minskoff Theatre <br>Address : W. 45th St. (No. 200) <br>Capacity : 1710 <br>Owner.Operator : Nederlander Organization <br>Current.production : The Lion King <br>Type : Musical <br>Opened : 1997-11-13November 13, 1997 <br>Closing : Open-ended <br>youtube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=The lion king broadway musical\" frameborder=\"0\" allowfullscreen></iframe> <br>"); 
+
+ infowindow.setPosition(event.latLng);
+infowindow.open(map,markerstheaterxgeo779[26] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "", disableAutoPan:false, maxWidth :330, pixelOffset :null  }); 
+ google.maps.event.addListener(markerstheaterxgeo779[27] ,"click",function(event){ 
+
+ infowindow.setContent("id : 28 <br>Musical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/Dear%20Evan%20Hansen.jpg?token=AUWyJ0h4PHTzC1HqbSyNyDHRqB-F7fokks5YUFltwA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> <br>Theatre : Music Box Theatre <br>Address : W. 45th St. (No. 239) <br>Capacity : 1009 <br>Owner.Operator : Shubert Organization <br>Current.production : Dear Evan Hansen <br>Type : Musical <br>Opened : 2016-12-04December 4, 2016 <br>Closing : Open-ended <br>youtube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=Dear Evan Hansen broadway musical\" frameborder=\"0\" allowfullscreen></iframe> <br>"); 
+
+ infowindow.setPosition(event.latLng);
+infowindow.open(map,markerstheaterxgeo779[27] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "", disableAutoPan:false, maxWidth :330, pixelOffset :null  }); 
+ google.maps.event.addListener(markerstheaterxgeo779[28] ,"click",function(event){ 
+
+ infowindow.setContent("id : 29 <br>Musical.Poster :  <br>Theatre : Nederlander Theatre <br>Address : W. 41st St. (No. 208) <br>Capacity : 1235 <br>Owner.Operator : Nederlander Organization <br>Current.production : War Paint <br>Type : Musical <br>Opened : 2017-04-06April 6, 2017* <br>Closing : Open-ended <br>youtube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=War Paint broadway musical\" frameborder=\"0\" allowfullscreen></iframe> <br>"); 
+
+ infowindow.setPosition(event.latLng);
+infowindow.open(map,markerstheaterxgeo779[28] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "", disableAutoPan:false, maxWidth :330, pixelOffset :null  }); 
+ google.maps.event.addListener(markerstheaterxgeo779[29] ,"click",function(event){ 
+
+ infowindow.setContent("id : 30 <br>Musical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/Cats.jpg?token=AUWyJ2gh7V3e54cpgtLKZQKjVbJKij64ks5YUFmWwA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> <br>Theatre : Neil Simon Theatre <br>Address : W. 52nd St. (No. 250) <br>Capacity : 1467 <br>Owner.Operator : Nederlander Organization <br>Current.production : Cats <br>Type : Musical <br>Opened : 2016-07-31July 31, 2016 <br>Closing : Open-ended <br>youtube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=Cats broadway musical\" frameborder=\"0\" allowfullscreen></iframe> <br>"); 
+
+ infowindow.setPosition(event.latLng);
+infowindow.open(map,markerstheaterxgeo779[29] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "", disableAutoPan:false, maxWidth :330, pixelOffset :null  }); 
+ google.maps.event.addListener(markerstheaterxgeo779[30] ,"click",function(event){ 
+
+ infowindow.setContent("id : 31 <br>Musical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/Aladdin.jpg?token=AUWyJ-e3hjYs8ZFqJCEiDV-0J72WWBCkks5YUFm0wA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> <br>Theatre : New Amsterdam Theatre <br>Address : W. 42nd St. (No. 214) <br>Capacity : 1747 <br>Owner.Operator : Disney Theatrical Group <br>Current.production : Aladdin <br>Type : Musical <br>Opened : 2014-03-20March 20, 2014 <br>Closing : Open-ended <br>youtube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=Aladdin broadway musical\" frameborder=\"0\" allowfullscreen></iframe> <br>"); 
+
+ infowindow.setPosition(event.latLng);
+infowindow.open(map,markerstheaterxgeo779[30] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "", disableAutoPan:false, maxWidth :330, pixelOffset :null  }); 
+ google.maps.event.addListener(markerstheaterxgeo779[31] ,"click",function(event){ 
+
+ infowindow.setContent("id : 32 <br>Musical.Poster :  <br>Theatre : Palace Theatre <br>Address : Broadway (No. 1564) <br>Capacity : 1743 <br>Owner.Operator : Nederlander Organization <br>Current.production : The Illusionists Turn of the Century <br>Type : Magic <br>Opened : 2016-11-25November 25, 2016 <br>Closing : 2017-01-01January 1, 2017 <br>youtube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=The Illusionists Turn of the Century magic\" frameborder=\"0\" allowfullscreen></iframe> <br>"); 
+
+ infowindow.setPosition(event.latLng);
+infowindow.open(map,markerstheaterxgeo779[31] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "", disableAutoPan:false, maxWidth :330, pixelOffset :null  }); 
+ google.maps.event.addListener(markerstheaterxgeo779[32] ,"click",function(event){ 
+
+ infowindow.setContent("id : 33 <br>Musical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/Hamilton.jpg?token=AUWyJ9UuQI249VeC7x8RI0pBu94FzqJHks5YUFnkwA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> <br>Theatre : Richard Rodgers Theatre <br>Address : W. 46th St. (No. 226) <br>Capacity : 1400 <br>Owner.Operator : Nederlander Organization <br>Current.production : Hamilton <br>Type : Musical <br>Opened : 2015-08-06August 6, 2015 <br>Closing : Open-ended <br>youtube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=Hamilton broadway musical\" frameborder=\"0\" allowfullscreen></iframe> <br>"); 
+
+ infowindow.setPosition(event.latLng);
+infowindow.open(map,markerstheaterxgeo779[32] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "", disableAutoPan:false, maxWidth :330, pixelOffset :null  }); 
+ google.maps.event.addListener(markerstheaterxgeo779[33] ,"click",function(event){ 
+
+ infowindow.setContent("id : 34 <br>Musical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/Something%20Rotten!.jpg?token=AUWyJxF2jr9_THQlzkAzAiBafUniGnc5ks5YUFoKwA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> <br>Theatre : St. James Theatre <br>Address : W. 44th St. (No. 246) <br>Capacity : 1709 <br>Owner.Operator : Jujamcyn Theaters <br>Current.production : Something Rotten! <br>Type : Musical <br>Opened : 2015-04-22April 22, 2015 <br>Closing : 2017-01-01January 1, 2017 <br>youtube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=Something rotten broadway musical\" frameborder=\"0\" allowfullscreen></iframe> <br>"); 
+
+ infowindow.setPosition(event.latLng);
+infowindow.open(map,markerstheaterxgeo779[33] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "", disableAutoPan:false, maxWidth :330, pixelOffset :null  }); 
+ google.maps.event.addListener(markerstheaterxgeo779[34] ,"click",function(event){ 
+
+ infowindow.setContent("id : 35 <br>Musical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/Heisenberg.jpg?token=AUWyJzee4me3ya0ODA5SFLoco7SzVhlfks5YUFowwA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> <br>Theatre : Samuel J. Friedman Theatre <br>Address : W. 47th St. (No. 261) <br>Capacity : 650 <br>Owner.Operator : Manhattan Theatre Club <br>Current.production : Heisenberg <br>Type : Play <br>Opened : 2016-10-13October 13, 2016 <br>Closing : 2016-12-11December 11, 2016 <br>youtube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=Heisenberg broadway musical\" frameborder=\"0\" allowfullscreen></iframe> <br>"); 
+
+ infowindow.setPosition(event.latLng);
+infowindow.open(map,markerstheaterxgeo779[34] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "", disableAutoPan:false, maxWidth :330, pixelOffset :null  }); 
+ google.maps.event.addListener(markerstheaterxgeo779[35] ,"click",function(event){ 
+
+ infowindow.setContent("id : 36 <br>Musical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/shows_img/Matilda.jpg?token=AUWyJwjj_UJpjNQQcov6WsuZgpGIdxxvks5YUFp2wA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> <br>Theatre : Shubert Theatre <br>Address : W. 44th St. (No. 225) <br>Capacity : 1460 <br>Owner.Operator : Shubert Organization <br>Current.production : Matilda the Musical <br>Type : Musical <br>Opened : 2013-04-11April 11, 2013 <br>Closing : 2017-01-01January 1, 2017 <br>youtube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=Matilda the musical broadway\" frameborder=\"0\" allowfullscreen></iframe> <br>"); 
+
+ infowindow.setPosition(event.latLng);
+infowindow.open(map,markerstheaterxgeo779[35] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "", disableAutoPan:false, maxWidth :330, pixelOffset :null  }); 
+ google.maps.event.addListener(markerstheaterxgeo779[36] ,"click",function(event){ 
+
+ infowindow.setContent("id : 37 <br>Musical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/Beautiful%20The%20Carole%20King%20Musical.jpg?token=AUWyJ174Bk3vyR0gSsqGBalGZkUBCEAwks5YUFqlwA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> <br>Theatre : Stephen Sondheim Theatre <br>Address : W. 43rd St. (No. 124) <br>Capacity : 1055 <br>Owner.Operator : Roundabout Theatre Company <br>Current.production : Beautiful: The Carole King Musical <br>Type : Musical <br>Opened : 2014-01-12January 12, 2014 <br>Closing : Open-ended <br>youtube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=Beautiful The Carole King Musical\" frameborder=\"0\" allowfullscreen></iframe> <br>"); 
+
+ infowindow.setPosition(event.latLng);
+infowindow.open(map,markerstheaterxgeo779[36] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "", disableAutoPan:false, maxWidth :330, pixelOffset :null  }); 
+ google.maps.event.addListener(markerstheaterxgeo779[37] ,"click",function(event){ 
+
+ infowindow.setContent("id : 38 <br>Musical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/Holiday%20Inn%2C%20The%20New%20Irving%20Berlin%20Musical.jpg?token=AUWyJ255UaYd5xoeukEvwzUELlX_LZp5ks5YUFrRwA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> <br>Theatre : Studio 54 <br>Address : W. 54th St. (No. 254) <br>Capacity : 1006 <br>Owner.Operator : Roundabout Theatre Company <br>Current.production : Holiday Inn <br>Type : Musical <br>Opened : 2016-10-06October 6, 2016 <br>Closing : 2017-01-15January 15, 2017 <br>youtube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=Holiday Inn broadway musical\" frameborder=\"0\" allowfullscreen></iframe> <br>"); 
+
+ infowindow.setPosition(event.latLng);
+infowindow.open(map,markerstheaterxgeo779[37] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "", disableAutoPan:false, maxWidth :330, pixelOffset :null  }); 
+ google.maps.event.addListener(markerstheaterxgeo779[38] ,"click",function(event){ 
+
+ infowindow.setContent("id : 39 <br>Musical.Poster :  <br>Theatre : Vivian Beaumont Theater <br>Address : W. 65th St. (No. 150) <br>Capacity : 1080 <br>Owner.Operator : Lincoln Center Theatre <br>Current.production : Oslo <br>Type : Play <br>Opened : 2017-04-13April 13, 2017* <br>Closing : Open-ended <br>youtube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=Oslo broadway play\" frameborder=\"0\" allowfullscreen></iframe> <br>"); 
+
+ infowindow.setPosition(event.latLng);
+infowindow.open(map,markerstheaterxgeo779[38] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "", disableAutoPan:false, maxWidth :330, pixelOffset :null  }); 
+ google.maps.event.addListener(markerstheaterxgeo779[39] ,"click",function(event){ 
+
+ infowindow.setContent("id : 40 <br>Musical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/Falsettos.jpg?token=AUWyJ_gj4pZ8ian20757Zqe2TP158eGzks5YUFsbwA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> <br>Theatre : Walter Kerr Theatre <br>Address : W. 48th St. (No. 219) <br>Capacity : 945 <br>Owner.Operator : Jujamcyn Theaters <br>Current.production : Falsettos <br>Type : Musical <br>Opened : 2016-10-27October 27, 2016 <br>Closing : 2017-01-08January 8, 2017 <br>youtube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=Falsettos broadway musical\" frameborder=\"0\" allowfullscreen></iframe> <br>"); 
+
+ infowindow.setPosition(event.latLng);
+infowindow.open(map,markerstheaterxgeo779[39] )});   
+
+  var infowindow = new google.maps.InfoWindow({ content: "", disableAutoPan:false, maxWidth :330, pixelOffset :null  }); 
+ google.maps.event.addListener(markerstheaterxgeo779[40] ,"click",function(event){ 
+
+ infowindow.setContent("id : 41 <br>Musical.Poster : <br><img src=\"https://raw.githubusercontent.com/TZstatsADS/Fall2016-proj5-grp6/master/figs/images/School%20of%20Rock%20%E2%80%93%20The%20Musical.jpg?token=AUWyJ4ee2UJq3CtARmyMtSnsZvWWDYj4ks5YUFtUwA%3D%3D\" alt=\"HTML5 Icon\" style=\"width:120px;height:170px;\"> <br>Theatre : Winter Garden Theatre <br>Address : Broadway (No. 1634) <br>Capacity : 1526 <br>Owner.Operator : Shubert Organization <br>Current.production : School of Rock <br>Type : Musical <br>Opened : 2015-12-06December 6, 2015 <br>Closing : Open-ended <br>youtube : <br><iframe width=\"200\" height=\"150\" src=\"http://www.youtube.com/embed?autoplay=1&listType=search&list=School of rock broadway musical\" frameborder=\"0\" allowfullscreen></iframe> <br>"); 
+
+ infowindow.setPosition(event.latLng);
+infowindow.open(map,markerstheaterxgeo779[40] )});   
+showO(markerstheaterxgeo779,"markerstheaterxgeo779box",map);  google.maps.event.addListener(  map , 'rightclick', function(event) {
+    var lat = event.latLng.lat();
+    var lng = event.latLng.lng();
+    alert('Lat=' + lat + '; Lng=' + lng);});   
+ }
+</script> 
+ </head> 
+ <body onload="initialize()"> 
+  <div id="map_canvas"></div>  
+
+                           
+ <div id="cBoxes"> 
+<input type="checkbox" id="markerstheaterxgeo779box" onClick='boxclick(this,markerstheaterxgeo779,"markerstheaterxgeo779box",map);' /> <b>theaterxgeo<b> <hr /> </tr> 
+ </table> 
+ <hr>  
+ </div> 
+ </body>  
+  </html>
