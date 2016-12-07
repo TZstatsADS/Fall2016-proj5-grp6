@@ -25,14 +25,16 @@
 + Spotify API
 
 
-+ 1. Synopsis Analysis
-+ 2. Sentimental Analysis
 + 3. Characters' Lyrics Analysis：
-+*****The Goal: We want to find the similarity 
++ The Goal: We want to give recommendation based on users' preference. For example, if a person really likes a character in one broadway show and wants to find another show which has the same type of character to watch. They can use our Characters' lyrics section to select a broadway show.
 
-******* 1. Scraped the lyrics of each principal character for each broadway show that are avialable from the allmusicals website 
-******* 2. Used TF-IDF Algorithm to do automatic keyphrase extraction
-******* 3. Constructed the similarity matrix using cosine-distance based similarity.
++ The Methodology:
+
++ 1. Scraped the lyrics of each principal character for each broadway show that are avialable from the allmusicals website 
++ 2. Used TF-IDF Algorithm to do automatic keyphrase extraction
++ 3. Constructed the similarity matrix for each character using cosine-distance based similarity.
+
+
 
 
 **Contribution statement**: ([default](doc/a_note_on_contributions.md)) All team members contributed equally in all stages of this project. All team members approve our work presented in this GitHub repository including this contributions statement. 
