@@ -5,8 +5,8 @@
 
 ![words](https://github.com/TZstatsADS/Fall2016-proj5-grp6/blob/master/figs/shows_img/broadwayshow.jpeg)
 
-(https://github.com/TZstatsADS/Fall2016-proj5-grp6/blob/master/figs/Screen Shot 2016-12-07 at 4.30.35 PM.png)
-
+![words](https://github.com/TZstatsADS/Fall2016-proj5-grp6/blob/master/figs/11.png)
+![words](https://github.com/TZstatsADS/Fall2016-proj5-grp6/blob/master/figs/22.png)
 
 + Team members
 	+ Yanxi Chen
