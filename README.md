@@ -3,7 +3,7 @@
 Term: Fall 2016
 Team Name: Catch Me If U Can
 
-![words](https://github.com/TZstatsADS/Fall2016-proj5-grp6/blob/master/figs/shows_img/aladdin-spring2016%202.jpg)
+![words](https://github.com/TZstatsADS/Fall2016-proj5-grp6/blob/master/figs/shows_img/broadwayshow.jpeg)
 
 
 + Team members
