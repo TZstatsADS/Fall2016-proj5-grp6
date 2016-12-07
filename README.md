@@ -14,14 +14,14 @@
 	+ Jiayu Wang
 + Project summary: In this project, we created a shiny app to give recommendations on Broadway shows based on users' preference. 
 + We considered the following approaches to make the recommendations:
-+ 1. Synopsis Analysis
-+ 2. Sentimental Analysis
-+ 3. Characters' lyrics Analysis
++ Synopsis Analysis
++ Sentimental Analysis
++ Characters' lyrics Analysis
 
 + The data: We scraped the lyrics, musical, reviews, synopsis, and pictures of the 450 off-broadway shows and 33 broadway shows from the following websites:
 
-+ 1. https://www.ibdb.com/
-+ 2. https://www.allmusicals.com
++ https://www.ibdb.com/
++ https://www.allmusicals.com
 
 
 **Contribution statement**: ([default](doc/a_note_on_contributions.md)) All team members contributed equally in all stages of this project. All team members approve our work presented in this GitHub repository including this contributions statement. 
