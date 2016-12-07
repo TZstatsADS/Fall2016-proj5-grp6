@@ -12,11 +12,10 @@
 	+ Mengyuan Tao
 	+ Jiani Tian
 	+ Jiayu Wang
-+ Project summary: In this project, we created a shiny app to give recommendations on Broadway shows based on users' preference. 
-+ We considered the following approaches to make the recommendations:
-+  Synopsis Analysis
-+  Sentimental Analysis
-+  Characters' lyrics Analysis
++ Project summary: In this project, we created a shiny app to give recommendations on Broadway shows based on users' preference. We considered the following approaches to make the recommendations:
++  1. Synopsis Analysis
++  2. Sentimental Analysis
++  3. Characters' lyrics Analysis
 
 + The data: We scraped the lyrics, musical, reviews, synopsis, and pictures of the 450 off-broadway shows and 33 broadway shows from the following websites:
 
