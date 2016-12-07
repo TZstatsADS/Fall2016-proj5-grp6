@@ -25,7 +25,7 @@
 + Spotify API
 
 
-+ 3. Characters' Lyrics Analysis：
++ Characters' Lyrics Analysis：
 + The Goal: We want to give recommendation based on users' preference. For example, if a person really likes a character in one broadway show and wants to find another show which has the same type of character to watch. They can use our Characters' lyrics section to select a broadway show.
 
 + The Methodology:
