@@ -19,9 +19,9 @@
 
 + The Methodology:
 
-+ Scraped the lyrics of each principal character for each broadway show that are avialable from the allmusicals website 
-+ Used TF-IDF Algorithm to do automatic keyphrase extraction
-+ Constructed the similarity matrix for each character using cosine-distance based similarity.
+1. Scraped the lyrics of each principal character for each broadway show that are avialable from the allmusicals website 
+2. Used TF-IDF Algorithm to do automatic keyphrase extraction
+3. Constructed the similarity matrix for each character using cosine-distance based similarity.
 
 + We considered the following approaches to make the recommendations: 
 
