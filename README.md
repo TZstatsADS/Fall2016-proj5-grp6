@@ -4,7 +4,6 @@
 +Team Name: Catch Me If U Can
 
 ![words](https://github.com/TZstatsADS/Fall2016-proj5-grp6/blob/master/figs/shows_img/broadwayshow.jpeg)
-
 ![words](https://github.com/TZstatsADS/Fall2016-proj5-grp6/blob/master/figs/11.png)
 ![words](https://github.com/TZstatsADS/Fall2016-proj5-grp6/blob/master/figs/22.png)
 ![words](https://github.com/TZstatsADS/Fall2016-proj5-grp6/blob/master/figs/wc6.png)
@@ -15,21 +14,22 @@
 	+ Mengyuan Tao
 	+ Jiani Tian
 	+ Jiayu Wang
+
 + Project summary: In this project, we created a shiny app to give recommendations on Broadway shows based on users' preference. We considered the following approaches to make the recommendations: 
 1. Synopsis Analysis 
-2. Sentimental Analysis
-3. Characters' lyrics Analysis
-4. Spotify Recommendation
+- compute the similarity between synopsis by cosine similarity
+2. Sentimental Analysis 
+- use the sentimental word frequency as features for each document and compute association
+3. Characters' lyrics Analysis 
+- extract the lyrics of each character and do text mining to measure association.We want to give recommendation based on users' preference. For example, if a person really likes a character in one broadway show and wants to find another show which has the same type of character to watch. They can use our Characters' lyrics section to select a broadway show.
+4. Spotify Recommendation 
+- based on the big data of user's playing list 
 
 + The data: We scraped the lyrics, musical, reviews, synopsis, and pictures of the 450 off-broadway shows and 33 broadway shows from the following websites:
 
 + https://www.ibdb.com/
 + https://www.allmusicals.com
 + Spotify API
-
-
-+ Characters' Lyrics Analysis：
-+ The Goal: We want to give recommendation based on users' preference. For example, if a person really likes a character in one broadway show and wants to find another show which has the same type of character to watch. They can use our Characters' lyrics section to select a broadway show.
 
 + The Methodology:
 
