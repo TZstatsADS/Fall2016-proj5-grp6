@@ -7,6 +7,7 @@
 
 ![words](https://github.com/TZstatsADS/Fall2016-proj5-grp6/blob/master/figs/11.png)
 ![words](https://github.com/TZstatsADS/Fall2016-proj5-grp6/blob/master/figs/22.png)
+![words](https://github.com/TZstatsADS/Fall2016-proj5-grp6/blob/master/figs/wc6.png)
 
 + Team members
 	+ Yanxi Chen
