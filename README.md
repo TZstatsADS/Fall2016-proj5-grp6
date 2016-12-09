@@ -15,20 +15,7 @@
 	+ Jiani Tian
 	+ Jiayu Wang
 
-+ Project summary: In this project, we created a shiny app to give recommendations on Broadway shows based on users' preference. We considered the following approaches to make the recommendations: 
-1. Synopsis Analysis - compute the similarity between synopsis by cosine similarity
-
-2. Sentimental Analysis - use the sentimental word frequency as features for each document and compute association
-
-3. Characters' lyrics Analysis - extract the lyrics of each character and do text mining to measure association.We want to give recommendation based on users' preference. For example, if a person really likes a character in one broadway show and wants to find another show which has the same type of character to watch. They can use our Characters' lyrics section to select a broadway show.
-
-4. Spotify Recommendation - based on the big data of user's playing list 
-
-+ The data: We scraped the lyrics, musical, reviews, synopsis, and pictures of the 450 off-broadway shows and 33 broadway shows from the following websites:
-
-+ https://www.ibdb.com/
-+ https://www.allmusicals.com
-+ Spotify API
++ Project summary: In this project, we created a shiny app to give recommendations on Broadway shows based on users' preference. 
 
 + The Methodology:
 
@@ -36,6 +23,21 @@
 + Used TF-IDF Algorithm to do automatic keyphrase extraction
 + Constructed the similarity matrix for each character using cosine-distance based similarity.
 
++ We considered the following approaches to make the recommendations: 
+
+1. Synopsis Analysis - We scraped the synopsis of all off-broadway and braodway shows and then build a TF-IDF matrix by the word frequency and then compute cosine similarity between each pair of the synopsis and measure the association.
+
+2. Sentimental Analysis - We use the sentimental word frequency as features for each document and compute association
+
+3. Characters' lyrics Analysis -We extract the lyrics of each character and do text mining to measure association.We want to give recommendation based on users' preference. For example, if a person really likes a character in one broadway show and wants to find another show which has the same type of character to watch. They can use our Characters' lyrics section to select a broadway show.
+
+4. Spotify Recommendation - This approach is based on the big data of user's playing list 
+
++ The data: We scraped the lyrics, musical, reviews, synopsis, and pictures of the 450 off-broadway shows and 33 broadway shows from the following websites:
+
++ https://www.ibdb.com/
++ https://www.allmusicals.com
++ Spotify API
 
 
 
