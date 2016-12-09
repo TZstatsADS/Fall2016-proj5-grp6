@@ -9,11 +9,11 @@
 ![words](https://github.com/TZstatsADS/Fall2016-proj5-grp6/blob/master/figs/wc6.png)
 
 + Team members
-	+ Yanxi Chen
-	+ Minghao Dai
-	+ Mengyuan Tao
-	+ Jiani Tian
-	+ Jiayu Wang
+	+ Yanxi Chen(yanxi.chen@columbia.edu)
+	+ Minghao Dai(md3397@columbia.edu)
+	+ Mengyuan Tao(mt3051@columbia.edu)
+	+ Jiani Tian(jt2867@columbia.edu)
+	+ Jiayu Wang(jw3323@columbia.edu)
 
 + Project summary: In this project, we created a shiny app to give recommendations on Broadway shows based on users' preference. 
 
