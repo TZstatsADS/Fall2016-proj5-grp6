@@ -3,6 +3,7 @@
 +Term: Fall 2016
 +Team Name: Catch Me If U Can
 
+Here is the link of our app: https://adsproject-columbia.shinyapps.io/shiny/
 ![words](https://github.com/TZstatsADS/Fall2016-proj5-grp6/blob/master/figs/shows_img/broadwayshow.jpeg)
 ![words](https://github.com/TZstatsADS/Fall2016-proj5-grp6/blob/master/figs/11.png)
 ![words](https://github.com/TZstatsADS/Fall2016-proj5-grp6/blob/master/figs/22.png)
