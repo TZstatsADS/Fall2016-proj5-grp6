@@ -140,112 +140,112 @@ server <- function(input, output, clientData, session) {
   output$table1 <- renderUI({
     if(input$bor1==1){
       mydata <- review_name[1:31,]
-      s <- recommendation_reviews(mydata[input$AA,2])
+      s1 <- recommendation_reviews(mydata[input$AA1,2])
     }
     else if(input$bor1==2){
       mydata <- review_name[32:70,]
-      s <- recommendation_reviews(mydata[input$BB,2])
+      s1 <- recommendation_reviews(mydata[input$BB1,2])
     }
     else if(input$bor1==3){
       mydata <- review_name[71:110,]
-      s <- recommendation_reviews(mydata[input$CC,2])
+      s1 <- recommendation_reviews(mydata[input$CC1,2])
     }
     else if(input$bor1==4){
       mydata <- review_name[111:122,]
-      s <- recommendation_reviews(mydata[input$DD,2])
+      s1 <- recommendation_reviews(mydata[input$DD1,2])
     }
     else if(input$bor1==5){
       mydata <- review_name[123:127,]
-      s <- recommendation_reviews(mydata[input$EE,2])
+      s1 <- recommendation_reviews(mydata[input$EE1,2])
     }
     else if(input$bor1==6){
       mydata <- review_name[128:155,]
-      s <- recommendation_reviews(mydata[input$FF,2])
+      s1 <- recommendation_reviews(mydata[input$FF1,2])
     }
     else if(input$bor1==7){
       mydata <- review_name[156:175,]
-      s <- recommendation_reviews(mydata[input$GG,2])
+      s1 <- recommendation_reviews(mydata[input$GG1,2])
     }
     else if(input$bor1==8){
       mydata <- review_name[176:194,]
-      s <- recommendation_reviews(mydata[input$HH,2])
+      s1 <- recommendation_reviews(mydata[input$HH1,2])
     }
     else if(input$bor1==9){
       mydata <- review_name[195:205,]
-      s <- recommendation_reviews(mydata[input$II,2])
+      s1 <- recommendation_reviews(mydata[input$II1,2])
     }
     else if(input$bor1==10){
       mydata <- review_name[206:216,]
-      s <- recommendation_reviews(mydata[input$JJ,2])
+      s1 <- recommendation_reviews(mydata[input$JJ1,2])
     }
     else if(input$bor1==11){
       mydata <- review_name[217:222,]
-      s <- recommendation_reviews(mydata[input$KK,2])
+      s1 <- recommendation_reviews(mydata[input$KK1,2])
     }
     else if(input$bor1==12){
       mydata <- review_name[223:247,]
-      s <- recommendation_reviews(mydata[input$LL,2])
+      s1 <- recommendation_reviews(mydata[input$LL1,2])
     }
     else if(input$bor1==13){
       mydata <- review_name[248:282,]
-      s <- recommendation_reviews(mydata[input$MM,2])
+      s1 <- recommendation_reviews(mydata[input$MM1,2])
     }
     else if(input$bor1==14){
       mydata <- review_name[283:293,]
-      s <- recommendation_reviews(mydata[input$NN,2])
+      s1 <- recommendation_reviews(mydata[input$NN1,2])
     }
     else if(input$bor1==15){
       mydata <- review_name[294:304,]
-      s <- recommendation_reviews(mydata[input$OO,2])
+      s1 <- recommendation_reviews(mydata[input$OO1,2])
     }
     else if(input$bor1==16){
       mydata <- review_name[305:326,]
-      s <- recommendation_reviews(mydata[input$PP,2])
+      s1 <- recommendation_reviews(mydata[input$PP1,2])
     }
     else if(input$bor1==17){
       mydata <- review_name[327:329,]
-      s <- recommendation_reviews(mydata[input$QQ,2])
+      s1 <- recommendation_reviews(mydata[input$QQ1,2])
     }
     else if(input$bor1==18){
       mydata <- review_name[330:344,]
-      s <- recommendation_reviews(mydata[input$RR,2])
+      s1 <- recommendation_reviews(mydata[input$RR1,2])
     }
     else if(input$bor1==19){
       mydata <- review_name[345:392,]
-      s <- recommendation_reviews(mydata[input$SS,2])
+      s1 <- recommendation_reviews(mydata[input$SS1,2])
     }
     else if(input$bor1==20){
       mydata <- review_name[393:408,]
-      s <- recommendation_reviews(mydata[input$TT,2])
+      s1 <- recommendation_reviews(mydata[input$TT1,2])
     }
     else if(input$bor1==21){
       mydata <- review_name[409:410,]
-      s <- recommendation_reviews(mydata[input$UU,2])
+      s1 <- recommendation_reviews(mydata[input$UU1,2])
     }
     else if(input$bor1==22){
       mydata <- review_name[411:415,]
-      s <- recommendation_reviews(mydata[input$VV,2])
+      s1 <- recommendation_reviews(mydata[input$VV1,2])
     }
     else if(input$bor1==23){
       mydata <- review_name[416:434,]
-      s <- recommendation_reviews(mydata[input$WW,2])
+      s1 <- recommendation_reviews(mydata[input$WW1,2])
     }
     else if(input$bor1==24){
       mydata <- review_name[435,]
-      s <- recommendation_reviews(mydata[input$XX,2])
+      s1 <- recommendation_reviews(mydata[input$XX1,2])
     }
     else if(input$bor1==25){
       mydata <- review_name[436:439,]
-      s <- recommendation_reviews(mydata[input$YY,2])
+      s1 <- recommendation_reviews(mydata[input$YY1,2])
     }
     else if(input$bor1==26){
       mydata <- review_name[440:443,]
-      recommendation_reviews(mydata[input$ZZ,2])
+      s1<-recommendation_reviews(mydata[input$ZZ1,2])
     }
     
     fluidRow(
       column(12, id="columns",
-             lapply(s, function(i) {
+             lapply(s1, function(i) {
                a(box(width=NULL, height = 200,
                      title = HTML(paste0("<div class='image-wrap'><img src='./images/poster/",
                                          name.link$img_newer[name.link$name == i],
@@ -262,113 +262,112 @@ server <- function(input, output, clientData, session) {
     
   })
   
-  
   output$table2<-renderTable({
     if(input$bor2==1){
-      mydata <- review_name[1:31,]
-      spotify_recommendation(mydata[input$AA,2])
+      mydata <- drama_names[1:13,]
+      spotify_recommendation(mydata[input$AA2,2])
     }
     else if(input$bor2==2){
-      mydata <- review_name[32:70,]
-      spotify_recommendation(mydata[input$BB,2])
+      mydata <- drama_names[14:38,]
+      spotify_recommendation(mydata[input$BB2,2])
     }
     else if(input$bor2==3){
-      mydata <- review_name[71:110,]
-      spotify_recommendation(mydata[input$CC,2])
+      mydata <- drama_names[39:57,]
+      spotify_recommendation(mydata[input$CC2,2])
     }
     else if(input$bor2==4){
-      mydata <- review_name[111:122,]
-      spotify_recommendation(mydata[input$DD,2])
+      mydata <- drama_names[58:66,]
+      spotify_recommendation(mydata[input$DD2,2])
     }
     else if(input$bor2==5){
-      mydata <- review_name[123:127,]
-      spotify_recommendation(mydata[input$EE,2])
+      mydata <- drama_names[67:69,]
+      spotify_recommendation(mydata[input$EE2,2])
     }
     else if(input$bor2==6){
-      mydata <- review_name[128:155,]
-      spotify_recommendation(mydata[input$FF,2])
+      mydata <- drama_names[70:84,]
+      spotify_recommendation(mydata[input$FF2,2])
     }
     else if(input$bor2==7){
-      mydata <- review_name[156:175,]
-      spotify_recommendation(mydata[input$GG,2])
+      mydata <- drama_names[85:95,]
+      spotify_recommendation(mydata[input$GG2,2])
     }
     else if(input$bor2==8){
-      mydata <- review_name[176:194,]
-      spotify_recommendation(mydata[input$HH,2])
+      mydata <- drama_names[96:109,]
+      spotify_recommendation(mydata[input$HH2,2])
     }
     else if(input$bor2==9){
-      mydata <- review_name[195:205,]
-      spotify_recommendation(mydata[input$II,2])
+      mydata <- drama_names[110:112,]
+      spotify_recommendation(mydata[input$II2,2])
     }
     else if(input$bor2==10){
-      mydata <- review_name[206:216,]
-      spotify_recommendation(mydata[input$JJ,2])
+      mydata <- drama_names[113:121,]
+      spotify_recommendation(mydata[input$JJ2,2])
     }
     else if(input$bor2==11){
-      mydata <- review_name[217:222,]
-      spotify_recommendation(mydata[input$KK,2])
+      mydata <- drama_names[122:125,]
+      spotify_recommendation(mydata[input$KK2,2])
     }
     else if(input$bor2==12){
-      mydata <- review_name[223:247,]
-      spotify_recommendation(mydata[input$LL,2])
+      mydata <- drama_names[126:137,]
+      spotify_recommendation(mydata[input$LL2,2])
     }
     else if(input$bor2==13){
-      mydata <- review_name[248:282,]
-      spotify_recommendation(mydata[input$MM,2])
+      mydata <- drama_names[138:158,]
+      spotify_recommendation(mydata[input$MM2,2])
     }
     else if(input$bor2==14){
-      mydata <- review_name[283:293,]
-      spotify_recommendation(mydata[input$NN,2])
+      mydata <- drama_names[159:165,]
+      spotify_recommendation(mydata[input$NN2,2])
     }
     else if(input$bor2==15){
-      mydata <- review_name[294:304,]
-      spotify_recommendation(mydata[input$OO,2])
+      mydata <- drama_names[166:177,]
+      spotify_recommendation(mydata[input$OO2,2])
     }
     else if(input$bor2==16){
-      mydata <- review_name[305:326,]
-      spotify_recommendation(mydata[input$PP,2])
+      mydata <- drama_names[178:189,]
+      spotify_recommendation(mydata[input$PP2,2])
     }
     else if(input$bor2==17){
-      mydata <- review_name[327:329,]
-      spotify_recommendation(mydata[input$QQ,2])
+      mydata <- drama_names[190,]
+      spotify_recommendation(mydata[input$QQ2,2])
     }
     else if(input$bor2==18){
-      mydata <- review_name[330:344,]
-      spotify_recommendation(mydata[input$RR,2])
+      mydata <- drama_names[191:196,]
+      spotify_recommendation(mydata[input$RR2,2])
     }
     else if(input$bor2==19){
-      mydata <- review_name[345:392,]
-      spotify_recommendation(mydata[input$SS,2])
+      mydata <- drama_names[197:221,]
+      spotify_recommendation(mydata[input$SS2,2])
     }
     else if(input$bor2==20){
-      mydata <- review_name[393:408,]
-      spotify_recommendation(mydata[input$TT,2])
+      mydata <- drama_names[222:229,]
+      spotify_recommendation(mydata[input$TT2,2])
     }
     else if(input$bor2==21){
-      mydata <- review_name[409:410,]
-      spotify_recommendation(mydata[input$UU,2])
+      mydata <- drama_names[230:231,]
+      spotify_recommendation(mydata[input$UU2,2])
     }
     else if(input$bor2==22){
-      mydata <- review_name[411:415,]
-      spotify_recommendation(mydata[input$VV,2])
+      mydata <- drama_names[232,]
+      spotify_recommendation(mydata[input$VV2,2])
     }
     else if(input$bor2==23){
-      mydata <- review_name[416:434,]
-      spotify_recommendation(mydata[input$WW,2])
+      mydata <- drama_names[233:244,]
+      spotify_recommendation(mydata[input$WW2,2])
     }
     else if(input$bor2==24){
-      mydata <- review_name[435,]
-      spotify_recommendation(mydata[input$XX,2])
+      mydata <- drama_names[245,]
+      spotify_recommendation(mydata[input$XX2,2])
     }
     else if(input$bor2==25){
-      mydata <- review_name[436:439,]
-      spotify_recommendation(mydata[input$YY,2])
+      mydata <- drama_names[246:247,]
+      spotify_recommendation(mydata[input$YY2,2])
     }
     else if(input$bor2==26){
-      mydata <- review_name[440:443,]
-      spotify_recommendation(mydata[input$ZZ,2])
+      mydata <- drama_names[248,]
+      spotify_recommendation(mydata[input$ZZ2,2])
     }
-    })
+  })
   ############## Broadway tab ###########
   
   

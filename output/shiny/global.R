@@ -31,7 +31,7 @@ load("review_matrix.RData")
 load("use1.RData")
 load("drama_names.RData")
 load("name.link.RData")
-load("character_list.RData")
+#load("character_list.RData")
 dist <- read.csv("synopsis_document_association.csv")
 
 #### sentimental recommendation
@@ -54,6 +54,7 @@ recommendation_reviews <- function(input){
 ### sportify
 spotify_recommendation <- function(input_name){
   #input_name <- "A Day in Hollywood   A Night in the Ukraine"
+  #input_name<-"Ain't Misbehavin'"
   num <- which(drama_names$names==input_name)
   if(length(num) != 0){
     mat <- json_data[[num]]
