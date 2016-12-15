@@ -16,29 +16,23 @@ Here is the link of our app: https://adsproject-columbia.shinyapps.io/shiny/
 	+ Jiani Tian(jt2867@columbia.edu)
 	+ Jiayu Wang(jw3323@columbia.edu)
 
-+ Project summary: In this project, we created a shiny app to give recommendations on Broadway shows based on users' preference. 
++ Project summary: In this project, we built a shiny app to give recommendations on Broadway shows based on users' preference from different aspects, and did word cloud visualization, time series analysis, and plotted broadway theaters on google map with shows information. 
+
++ Data source: We scraped the lyrics, reviews, synopsis, posters and Spotify recommendations of the 450 broadway and off-broadway shows and historical gross, lyrics for main characters of 33 broadway shows from the following websites:
+
+  1. https://www.ibdb.com/
+  2. https://www.allmusicals.com
+  3. Spotify API
 
 + The Methodology:
 
-1. Scraped the lyrics of each principal character for each broadway show that are avialable from the allmusicals website 
-2. Used TF-IDF Algorithm to do automatic keyphrase extraction
-3. Constructed the similarity matrix for each character using cosine-distance based similarity.
+  1. Synopsis Analysis - We scraped the synopsis of all off-broadway and braodway shows and then build a TF-IDF matrix by the word frequency and then compute cosine similarity between each pair of the synopsis and measure the association.
 
-+ We considered the following approaches to make the recommendations: 
+  2. Sentimental Analysis - We use the sentimental word frequencies as features for each document and compute their distance matrix as our association matrix, then recommend the top 20 similar shows based on user's input show. 
 
-1. Synopsis Analysis - We scraped the synopsis of all off-broadway and braodway shows and then build a TF-IDF matrix by the word frequency and then compute cosine similarity between each pair of the synopsis and measure the association.
+  3. Characters' lyrics Analysis -We extract the lyrics of each character and do text mining to measure association.We want to give recommendation based on users' preference. For example, if a person really likes a character in one broadway show and wants to find another show which has the same type of character to watch. They can use our Characters' lyrics section to select a broadway show.
 
-2. Sentimental Analysis - We use the sentimental word frequency as features for each document and compute association
-
-3. Characters' lyrics Analysis -We extract the lyrics of each character and do text mining to measure association.We want to give recommendation based on users' preference. For example, if a person really likes a character in one broadway show and wants to find another show which has the same type of character to watch. They can use our Characters' lyrics section to select a broadway show.
-
-4. Spotify Recommendation - This approach is based on the big data of user's playing list 
-
-+ The data: We scraped the lyrics, musical, reviews, synopsis, and pictures of the 450 off-broadway shows and 33 broadway shows from the following websites:
-
-+ https://www.ibdb.com/
-+ https://www.allmusicals.com
-+ Spotify API
+  4. Spotify Recommendation - This approach is based on the big data of user's playing list from Spotify API. 
 
 
 
